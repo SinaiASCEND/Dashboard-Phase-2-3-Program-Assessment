@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <title>Psychiatry Clerkship Dashboard — AY 2025–26</title>
 <title>MCG Module Dashboard — Class of 2030</title>
 <style>
 :root{--navy:#221F72;--mag:#D80B8C;--cyan:#00AEEF;--ink:#1F2340;--text:#374151;--grey:#6B7280;--line:#E2E5EE;--light:#F4F5FA;--pink:#FBE3F0;--tint:#EAF8FE;--green:#0E8A5F;--mint:#E3F5EE}
 *{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}
 body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--text);background:#fff;font-size:15px;line-height:1.45}
-header{background:var(--navy);color:#fff;padding:22px 28px 0}
+
 .brand{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .brand .lock{font-weight:800;letter-spacing:.06em;font-size:14px}
 .brand .lock span{color:var(--cyan)}
 .brand .sub{font-size:12px;opacity:.75}
-h1{margin:10px 0 2px;font-size:26px;font-weight:700;line-height:1.15}
-.meta{font-size:13px;opacity:.85;margin-bottom:14px}
+
+
 nav{display:flex;gap:4px;flex-wrap:wrap}
-nav button{background:transparent;border:0;color:#fff;opacity:.7;padding:10px 16px;font-size:14px;font-weight:600;border-bottom:3px solid transparent;cursor:pointer}
-nav button.on{opacity:1;border-bottom-color:var(--mag)}
+
 nav button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
 main{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
 section.view{display:none}section.view.on{display:block}
@@ -52,12 +52,38 @@ ul.themes{margin:6px 0;padding-left:0;list-style:none}ul.themes li{display:flex;
 footer{border-top:1px solid var(--line);margin-top:40px;padding:14px 20px;font-size:12px;color:var(--grey);text-align:center}
 @media(max-width:680px){table.stack-m thead{display:none}table.stack-m tr{display:block;border:1px solid var(--line);margin-bottom:8px}table.stack-m td{display:flex;justify-content:space-between;text-align:right}table.stack-m td::before{content:attr(data-label);font-weight:600;text-align:left;color:var(--navy);margin-right:10px}}
 @media print{nav{display:none}section.view{display:block!important}h2{page-break-after:avoid}}
-<style>.stat .n.sm{font-size:22px}.muted{color:var(--grey)}.na{border-left-color:var(--line);background:#fff}.na .n{color:var(--grey);font-size:18px}</style></head><body>
-<header>
- <div class="brand"><div class="lock">ASCEND <span>|</span> Mount Sinai</div><div class="sub"><a href="../index.html" style="color:#fff;opacity:.85">ASCEND Programmatic Assessment — Phase 2</a> · Clerkship Director Dashboard</div></div>
- <h1 id="ttl"></h1><div class="meta" id="meta"></div>
- <nav><button class="on" data-v="module">Clerkship</button><button data-v="assess">Assessments</button><button data-v="curric">Curriculum &amp; evaluation</button><button data-v="compare">Compare years</button><span style="flex:1"></span><label style="font-size:13px;opacity:.9;padding:8px 0">Academic year <select id="cohort" style="margin-left:6px;padding:4px 6px;font-size:13px"><option value="ay2526">AY 2025–26</option></select></label></nav>
-</header>
+<style>.stat .n.sm{font-size:22px}.muted{color:var(--grey)}.na{border-left-color:var(--line);background:#fff}.na .n{color:var(--grey);font-size:18px}</style>
+<style>
+.mast{background:linear-gradient(105deg,#0a1f3c 0%,#0d2a4e 38%,#146aa8 82%,#1a9fd4 100%);color:#fff;position:relative;overflow:hidden;font-family:'Archivo',"Helvetica Neue",Helvetica,Arial,sans-serif}
+.mast-logo{position:absolute;right:0;top:50%;transform:translateY(-50%);height:75%;width:auto;object-fit:cover;object-position:right center;pointer-events:none;opacity:.5;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 70%,#000 100%),linear-gradient(to bottom,transparent 0%,#000 30%,#000 70%,transparent 100%),linear-gradient(to left,transparent 2%,#000 22%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0%,#000 70%,#000 100%),linear-gradient(to bottom,transparent 0%,#000 30%,#000 70%,transparent 100%),linear-gradient(to left,transparent 2%,#000 22%);mask-composite:intersect}
+.mast-in{max-width:1180px;margin:0 auto;padding:30px 28px 26px;position:relative}
+.mast-eye{display:flex;align-items:center;gap:11px}.mast-eye i{width:14px;height:14px;border-radius:50%;background:#d6117f;box-shadow:0 0 0 3px rgba(214,17,127,.25);flex:none}
+.mast-eyebrow{font-weight:700;font-size:13px;letter-spacing:2.5px;line-height:1.5;color:#e9eef4}
+.mast-h1{font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1;margin:20px 0 0;color:#fff}
+.mast-lead{border-left:4px solid #d6117f;padding-left:16px;margin:20px 0 0;max-width:640px;font-size:16px;line-height:1.6;color:#dbe4ee}
+.mast-motto{font-weight:700;font-size:19px;margin:22px 0 0;display:flex;gap:22px;flex-wrap:wrap}
+.mast-util{background:rgba(4,14,28,.34);backdrop-filter:blur(2px);position:relative}
+.mast-util>div{max-width:1180px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.mast-util .t{font-weight:600;font-size:14px;letter-spacing:.4px;color:#eef3f8}.mast-util .t span{color:rgba(255,255,255,.5);font-weight:400}
+.pill-btn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.95);color:#1a1a44;font-weight:600;font-size:13px;text-decoration:none;white-space:nowrap}.pill-btn:hover{background:#fff;color:#d6117f}.pill-btn+.pill-btn{margin-left:0}
+.mast-bar{height:4px;display:flex}.mast-bar i{display:block}
+.mast nav{background:#0a1f3c}.mast nav>div{max-width:1180px;margin:0 auto;padding:11px 22px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.mast nav button{padding:8px 15px;border:none;border-radius:999px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.08);color:#cfd8e3;opacity:1}.mast nav button.on{background:#d6117f;color:#fff}
+@media(max-width:860px){.mast-h1{font-size:33px}.mast-eyebrow{font-size:11px;letter-spacing:1.6px}.mast-motto{font-size:16px;gap:14px}.mast-logo{height:96px;opacity:.4}.mast-lead{font-size:14px}}
+@media(max-width:480px){.mast-h1{font-size:26px}.mast-logo{display:none}}
+</style>
+</head><body>
+<header class="mast">
+ <img src="../assets/oca-mountain.png" alt="" class="mast-logo">
+ <div class="mast-in">
+  <div class="mast-eye"><i></i><div class="mast-eyebrow">ICAHN SCHOOL OF MEDICINE AT MOUNT SINAI<br>LENI AND PETER W. MAY DEPARTMENT OF MEDICAL EDUCATION</div></div>
+  <h1 class="mast-h1"><span id="ttl"></span></h1>
+  <p class="mast-lead"><span id="meta"></span></p>
+  <div class="mast-motto"><span style="color:#1fb6e8">Climb higher.</span><span style="color:#fff">Reach further.</span><span style="color:#d6117f">Care deeper.</span></div>
+ </div>
+ <div class="mast-util"><div><div class="t">ASCEND Programmatic Assessment — Phase 2 <span>· Clerkship Director Dashboard</span></div><a class="pill-btn" href="../index.html">&#8592; Phase 2 dashboards</a><a class="pill-btn" href="https://sinaiascend.github.io/Dashboard---HUB/">Back to ASCEND Hub</a></div></div>
+ <div class="mast-bar"><i style="flex:2;background:#1fb6e8"></i><i style="flex:1;background:#fff"></i><i style="flex:1;background:#d6117f"></i></div>
+<nav><div><button class="on" data-v="module">Clerkship</button><button data-v="assess">Assessments</button><button data-v="curric">Curriculum &amp; evaluation</button><button data-v="compare">Compare years</button><span style="flex:1"></span><label style="font-size:13px;color:#cfd8e3;padding:8px 0">Academic year <select id="cohort" style="margin-left:6px;padding:4px 6px;font-size:13px"><option value="ay2526">AY 2025–26</option></select></label></div></nav></header>
 <main>
 <section class="view on" id="v-module"></section>
 <section class="view" id="v-assess"></section>
