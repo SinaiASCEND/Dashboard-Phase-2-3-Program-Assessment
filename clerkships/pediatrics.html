@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet">
-<title>Pediatrics Clerkship Dashboard — AY 2025–26</title>
-<title>MCG Module Dashboard — Class of 2030</title>
+<title>ASCEND Pediatrics Clerkship Dashboard</title>
+
 <style>
 :root{--navy:#221F72;--mag:#D80B8C;--cyan:#00AEEF;--ink:#1F2340;--text:#374151;--grey:#6B7280;--line:#E2E5EE;--light:#F4F5FA;--pink:#FBE3F0;--tint:#EAF8FE;--green:#0E8A5F;--mint:#E3F5EE}
 *{box-sizing:border-box}html,body{margin:0;overflow-x:hidden}
@@ -94,7 +94,74 @@ table.stack-m{width:100%}table.stack-m td.num,table.stack-m th.num{white-space:n
 .mchip[data-tip]:hover::before{content:'';position:absolute;left:10px;top:100%;border:6px solid transparent;border-bottom-color:#1a1a44;z-index:21}
 .rce-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:760px){.rce-wrap{grid-template-columns:1fr}}
 .rce th.num{font-size:10.5px;width:1%;white-space:nowrap}.rce td{padding:6px 8px;font-size:12.5px}
-</style><style>.lvl{position:relative;cursor:default}.lvl[data-tip]:hover::after{content:attr(data-tip);position:absolute;right:0;top:calc(100% + 6px);z-index:20;width:300px;background:#1a1a44;color:#fff;font-weight:400;font-size:12px;line-height:1.4;padding:8px 10px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.25);white-space:normal;text-align:left}.lvl[data-tip]:hover::before{content:'';position:absolute;right:10px;top:100%;border:6px solid transparent;border-bottom-color:#1a1a44;z-index:21}</style></head><body>
+</style><style>.lvl{position:relative;cursor:default}.lvl[data-tip]:hover::after{content:attr(data-tip);position:absolute;right:0;top:calc(100% + 6px);z-index:20;width:300px;background:#1a1a44;color:#fff;font-weight:400;font-size:12px;line-height:1.4;padding:8px 10px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.25);white-space:normal;text-align:left}.lvl[data-tip]:hover::before{content:'';position:absolute;right:10px;top:100%;border:6px solid transparent;border-bottom-color:#1a1a44;z-index:21}</style><style>.callout{background:#E0F5FD;border-left:5px solid #00AEEF;border-radius:8px;padding:12px 16px;margin:10px 0 14px;font-size:14px;line-height:1.5;color:#0B2F4E}.callout b{color:#0284B5}.callout .tag{display:inline-block;background:#0284B5;color:#fff;font-size:11px;font-weight:700;letter-spacing:.5px;border-radius:4px;padding:2px 8px;margin-right:8px;vertical-align:1px}</style><style>
+/* ---- mobile optimisation ---- */
+.chart,.card{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chart table.heat,.card table,.rce{min-width:100%}
+@media(max-width:760px){
+ main{padding:14px 12px 60px}
+ .mchip[data-tip]:hover::after,.mchip[data-tip]:hover::before,.lvl[data-tip]:hover::after,.lvl[data-tip]:hover::before{display:none}
+ .stat .n{font-size:26px}.stat .s{font-size:11px}
+ .sparks{grid-template-columns:1fr 1fr}
+ .heat{font-size:11px}.heat td{padding:5px 3px}.heat .hn{font-size:7.5px}
+ .prof-top{gap:16px}.dirs{gap:12px}.dir{width:104px}.dir img{width:84px;height:84px}
+ .callout{font-size:13px}
+ .rag-key{flex-wrap:wrap;gap:8px}
+ /* collapsible sections */
+ .sec>h2{cursor:pointer;position:relative;padding-right:28px;user-select:none}
+ .sec>h2::after{content:'';position:absolute;right:6px;top:50%;width:9px;height:9px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:translateY(-70%) rotate(45deg);transition:transform .15s}
+ .sec.closed>h2::after{transform:translateY(-30%) rotate(-135deg)}
+ .sec.closed>.sec-body{display:none}
+ .sec>h2 .cnt{font-size:11px;font-weight:600;color:#6B7280;margin-left:8px}
+ .jump{position:sticky;top:0;z-index:15;background:#fff;border-bottom:1px solid var(--line);margin:0 -12px 12px;padding:8px 12px;display:flex;gap:6px;overflow-x:auto;white-space:nowrap}
+ .jump a{font-size:12px;font-weight:600;color:var(--navy);background:#EEF0F7;border-radius:999px;padding:5px 10px;text-decoration:none}
+ .mast nav>div{padding:8px 10px}.mast nav button{padding:7px 11px;font-size:12px}
+ .pill-btn{padding:7px 12px;font-size:12px}
+}
+@media(max-width:480px){.sparks{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+/* tap tooltip sheet */
+#tipsheet{display:none;position:fixed;left:0;right:0;bottom:0;z-index:100;background:#1a1a44;color:#fff;padding:14px 18px 20px;font-size:14px;line-height:1.5;border-radius:14px 14px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.3)}
+#tipsheet.on{display:block}#tipsheet b{color:#7fd3f7;display:block;margin-bottom:4px}#tipsheet .x{position:absolute;right:14px;top:10px;font-size:20px;opacity:.8;cursor:pointer}
+</style><style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+.chart,.card,.prof,.callout,.stat{width:100%;max-width:100%}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:0 -2px}
+.tscroll>table{min-width:100%;width:max-content;max-width:none}
+@media(max-width:760px){
+ main{padding:10px 10px 60px}
+ .chart{padding:12px 10px}.card{padding:12px 10px}.prof{padding:12px 10px}
+ .sec-body>.grid,.grid{gap:10px}
+ table.stack-m{width:100%}table.stack-m td:first-child{width:auto}table.stack-m td.num{width:auto;padding-left:10px;padding-right:10px}
+ .heat{border-spacing:2px}.heat td{padding:5px 2px;font-size:10.5px}.heat td:first-child{max-width:130px;white-space:normal;line-height:1.2;font-size:11px}
+ .rce td{font-size:12px;padding:5px 6px}
+ .legend,.note{font-size:11.5px;line-height:1.45}
+ svg{max-width:100%;height:auto}
+ .jump{margin:0 -10px 10px;padding:8px 10px}
+ .sec>h2{font-size:17px}
+ .themes li{font-size:12.5px}
+}
+</style><style>
+/* sticky first column in scrollable tables */
+.tscroll{position:relative}
+.tscroll>table th:first-child,.tscroll>table td:first-child{position:sticky;left:0;z-index:2;background:#fff}
+.tscroll>table.heat td:first-child{background:#fff;box-shadow:2px 0 0 #E2E5EE}
+.tscroll>table.heat th:first-child{background:#fff}
+.tscroll>table:not(.heat) th:first-child{background:var(--navy)}
+.tscroll>table:not(.heat) tr:nth-child(even) td:first-child{background:#F6F7FB}
+.tscroll>table:not(.heat) td:first-child{box-shadow:2px 0 0 #E2E5EE}
+.tscroll.scrollable::after{content:'';position:absolute;top:0;right:0;bottom:0;width:26px;background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,.9));pointer-events:none}
+.tscroll.scrollable.at-end::after{display:none}
+.tscroll.scrollable::before{content:'scroll →';position:absolute;right:8px;top:6px;font-size:10px;color:#6B7280;z-index:3}
+.tscroll.scrollable.at-end::before{display:none}
+@media(max-width:760px){
+ .tscroll>table.heat td:first-child{max-width:118px;min-width:96px;font-size:10.5px}
+ .tscroll>table.heat td.num,.tscroll>table.heat th.num{min-width:54px}
+ .tscroll>table.rce td:first-child{max-width:150px;min-width:120px}
+ .tscroll>table.rce th.num{min-width:48px}
+ .tscroll>table:not(.heat):not(.rce) td:first-child,.tscroll>table:not(.heat):not(.rce) th:first-child{max-width:150px;min-width:120px;white-space:normal}
+}
+</style></head><body>
 <header class="mast">
  <img src="../assets/oca-mountain.png" alt="" class="mast-logo">
  <div class="mast-in">
@@ -105,7 +172,7 @@ table.stack-m{width:100%}table.stack-m td.num,table.stack-m th.num{white-space:n
  </div>
  <div class="mast-util"><div><div class="t">ASCEND Programmatic Assessment — Phase 2 <span>· Clerkship Director Dashboard</span></div><a class="pill-btn" href="../index.html">&#8592; Phase 2 dashboards</a><a class="pill-btn" href="https://sinaiascend.github.io/Dashboard---HUB/">Back to ASCEND Hub</a></div></div>
  <div class="mast-bar"><i style="flex:2;background:#1fb6e8"></i><i style="flex:1;background:#fff"></i><i style="flex:1;background:#d6117f"></i></div>
-<nav><div><button class="on" data-v="module">Clerkship</button><button data-v="assess">Assessments</button><button data-v="curric">Curriculum &amp; evaluation</button><button data-v="compare">Compare years</button><span style="flex:1"></span><label style="font-size:13px;color:#cfd8e3;padding:8px 0">Academic year <select id="cohort" style="margin-left:6px;padding:4px 6px;font-size:13px"><option value="ay2627">AY 2026–27 · Rot 1–3 YTD</option><option value="ay2526" selected>AY 2025–26</option></select></label></div></nav></header>
+<nav><div><button class="on" data-v="module">Clerkship overview</button><button data-v="assess">Assessments</button><button data-v="curric">Curriculum &amp; evaluation</button><button data-v="compare">Compare years</button><span style="flex:1"></span><label style="font-size:13px;color:#cfd8e3;padding:8px 0">Academic year <select id="cohort" style="margin-left:6px;padding:4px 6px;font-size:13px"><option value="ay2627">AY 2026–27 · Rot 1–3 YTD</option><option value="ay2526" selected>AY 2025–26</option></select></label></div></nav></header>
 <main>
 <section class="view on" id="v-module"></section>
 <section class="view" id="v-assess"></section>
@@ -125,10 +192,12 @@ function hist(counts,edges,opts={}){const W=560,H=200,x0=34,y0=170,mx=Math.max(.
  for(let g=0;g<=mx;g+=Math.ceil(mx/4)){const y=y0-g*sc;s+=`<line x1="${x0}" y1="${y}" x2="${W-10}" y2="${y}" stroke="#E2E5EE"/><text x="${x0-4}" y="${y+4}" font-size="10" fill="#6B7280" text-anchor="end">${g}</text>`}
  counts.forEach((c,i)=>{const x=x0+i*pw;const col=(opts.hi!=null&&i>=opts.hi)?'#D80B8C':(opts.color||'#221F72');s+=`<rect x="${x+3}" y="${y0-c*sc}" width="${pw-6}" height="${c*sc}" fill="${col}"/><text x="${x+pw/2}" y="${y0-c*sc-3}" font-size="10" fill="#374151" text-anchor="middle">${c}</text><text x="${x+pw/2}" y="${y0+13}" font-size="10" fill="#6B7280" text-anchor="middle">${edges[i]??''}</text>`});
  return s+'</svg>'}
-function hbars(rows,opts={}){rows=rows.filter(r=>r.v!=null);const W=560,rh=22,x0=opts.x0||170,H=rows.length*rh+22,lo=opts.lo??0,hi=opts.hi??100,sc=(W-x0-60)/(hi-lo);let s=`<svg viewBox="0 0 ${W} ${H}" width="100%">`;
+function hbars(rows,opts={}){rows=rows.filter(r=>r.v!=null);const W=560,x0=opts.x0||170,lo=opts.lo??0,hi=opts.hi??100,sc=(W-x0-60)/(hi-lo);const maxc=Math.max(18,Math.floor((x0-10)/6.2));
+ const wrap=t=>{t=String(t);const out=[];let cur='';for(const x of t.split(' ')){if((cur+' '+x).trim().length<=maxc)cur=(cur+' '+x).trim();else{out.push(cur);cur=x}}if(cur)out.push(cur);if(out.length>3){out.length=3;out[2]=out[2].slice(0,maxc-1)+'…'}return out};
+ const L=rows.map(r=>wrap(r.label));const rh=L.map(l=>l.length>2?46:l.length>1?34:22);const H=rh.reduce((a,b)=>a+b,0)+22;let s=`<svg viewBox="0 0 ${W} ${H}" width="100%">`;
  (opts.grid||[0,25,50,75,100]).forEach(g=>{const x=x0+(g-lo)*sc;s+=`<line x1="${x}" y1="4" x2="${x}" y2="${H-18}" stroke="#E2E5EE"/><text x="${x}" y="${H-5}" font-size="10" fill="#6B7280" text-anchor="middle">${g}${opts.suffix??'%'}</text>`});
  if(opts.ref!=null){const xr=x0+(opts.ref-lo)*sc;s+=`<line x1="${xr}" y1="4" x2="${xr}" y2="${H-18}" stroke="#D80B8C" stroke-width="1.5" stroke-dasharray="5,4"/>`}
- rows.forEach((r,i)=>{const y=6+i*rh;s+=`<text x="${x0-6}" y="${y+12}" font-size="11" fill="#374151" text-anchor="end">${esc(r.label)}</text><rect x="${x0}" y="${y+2}" width="${Math.max(0,(r.v-lo))*sc}" height="12" fill="${opts.ref!=null?(r.v<opts.ref?'#C8102E':'#0E8A5F'):(r.color||'#221F72')}"/>`;if(r.prior!=null)s+=`<rect x="${x0+(r.prior-lo)*sc-1}" y="${y}" width="2" height="16" fill="#D80B8C"/>`;s+=`<text x="${x0+(r.v-lo)*sc+4}" y="${y+12}" font-size="10.5" fill="#374151">${opts.fmt?opts.fmt(r.v):f1(r.v)+(opts.suffix??'%')}</text>`});
+ let y=6;rows.forEach((r,i)=>{const h=rh[i],cy=y+h/2;const lines=L[i];s+=`<text x="${x0-6}" font-size="11" fill="#374151" text-anchor="end">${lines.map((t,k)=>`<tspan x="${x0-6}" y="${cy+4+(k-(lines.length-1)/2)*12}">${esc(t)}</tspan>`).join('')}</text><rect x="${x0}" y="${cy-6}" width="${Math.max(0,(r.v-lo))*sc}" height="12" fill="${opts.ref!=null?(r.v<opts.ref?'#C8102E':'#0E8A5F'):(r.color||'#221F72')}"/>`;if(r.prior!=null)s+=`<rect x="${x0+(r.prior-lo)*sc-1}" y="${cy-8}" width="2" height="16" fill="#D80B8C"/>`;s+=`<text x="${x0+(r.v-lo)*sc+4}" y="${cy+4}" font-size="10.5" fill="#374151">${opts.fmt?opts.fmt(r.v):f1(r.v)+(opts.suffix??'%')}</text>`;y+=h});
  return s+'</svg>'}
 function dotplot(sites,total,opts={}){const W=560,padL=150,padR=40,top=6,rowH=24,H=top+sites.length*rowH+20,lo=opts.lo||60,hi=opts.hi||95,X=v=>padL+((v-lo)/(hi-lo))*(W-padL-padR);let s=`<svg viewBox="0 0 ${W} ${H}" width="100%">`;
  for(let g=Math.ceil(lo/5)*5;g<=hi;g+=5)s+=`<line x1="${X(g)}" y1="${top}" x2="${X(g)}" y2="${top+sites.length*rowH}" stroke="#E2E5EE"/><text x="${X(g)}" y="${H-4}" font-size="10" fill="#6B7280" text-anchor="middle">${g}</text>`;
@@ -172,16 +241,16 @@ ${P.rce.proc.length?`<div class="rce-wrap" style="margin-top:12px">${(()=>{const
 
 // ---------- CLERKSHIP VIEW
 function renderModule(){const C=D.clerk,G=D.grades,S=D.shelf,E=D.eval,CE=D.ce,DO=D.do;const el=$('#v-module');
-$('#ttl').innerHTML=`${esc(C.name)} Clerkship — AY ${C.year.replace(' YTD','')}${/YTD/.test(C.year)?'<span class="ytdpill">YEAR TO DATE · PARTIAL</span>':''}`;$('#meta').textContent=`${C.term} · ${C.sites.length} clinical sites · ${E.n!=null?E.n+' clerkship evaluations':'clerkship evaluation not yet compiled'} · Data as of ${C.asof} · Prior year: ${C.prior}`;
+$('#ttl').innerHTML=`ASCEND ${esc(C.name)} Clerkship${/YTD/.test(C.year)?'<span class="ytdpill">AY '+C.year.replace(' YTD','')+' · YEAR TO DATE · PARTIAL</span>':''}`;$('#meta').textContent=`${C.term} · ${C.sites.length} clinical sites · ${E.n!=null?E.n+' clerkship evaluations':'clerkship evaluation not yet compiled'} · Data as of ${C.asof} · Prior year: ${C.prior}`;
 const q=E.items.find(i=>/quality of/i.test(i[0]));
 let h=`<h2>Clerkship profile</h2>`+renderProfile()+`<h2>Outcome</h2>${RAGKEY}<div class="grid g4">`;
 h+=G?`<div class="stat"><div class="n">${pct(G.honors,G.n)}</div><div class="l">Honors</div><div class="s">${G.honors} of ${G.n} students · ${G.period}</div></div>
 <div class="stat green"><div class="n">${G.pass} / ${G.fail}</div><div class="l">Pass / Fail</div><div class="s">${G.period}</div></div>`:`<div class="stat na"><div class="n">Not on file</div><div class="l">Grade distribution</div></div><div class="stat na"><div class="n">Not on file</div><div class="l">Pass / Fail</div></div>`;
 h+=S?`<div class="stat mag"><div class="n">${S.total.mean}</div><div class="l">Mean NBME shelf score${S.rot?' · YTD':''}</div><div class="s">${S.rot?S.rot.map(r=>r[0].replace('Rotation','Rot')+' '+r[2]).join(' · ')+' · YTD '+S.total.mean+' (n = '+S.total.n+')':'n = '+S.total.n+' · '+S.sites.length+' sites · AY '+C.year}</div></div>`:`<div class="stat na"><div class="n">Not on file</div><div class="l">NBME shelf</div></div>`;
-h+=E.fb&&E.fb.received?`<div class="stat ${E.fb.received[0]/E.fb.received[1]>=0.8?'gd':'bd'}"><div class="n">${pct(E.fb.received[0],E.fb.received[1])}</div><div class="l">Received mid-clerkship feedback</div><div class="s">${E.fb.received[0]} of ${E.fb.received[1]}${E.fb.obsHx?` · observed history ${pct(E.fb.obsHx[0],E.fb.obsHx[1])}`:''}</div></div>`:E.fbPct?`<div class="stat ${E.fbPct.received>=80?'gd':'bd'}"><div class="n">${E.fbPct.received==null?'—':E.fbPct.received+'%'}</div><div class="l">Received mid-clerkship feedback</div><div class="s">${rotStr(E.rot,'fbReceived',E.fbPct.received)}<br>observed history ${rotStr(E.rot,'obsHx',E.fbPct.obsHx)}<br>observed exam ${rotStr(E.rot,'obsExam',E.fbPct.obsPE)}<br>workload manageable ${rotStr(E.rot,'workload',E.fbPct.workload)}</div></div>`:`<div class="stat cyan"><div class="n">${q?f1(q[1]):'—'}</div><div class="l">Overall quality of educational experience (1–5)</div><div class="d">${q?delta(q[1],q[2]):''}</div></div>`;
+h+=E.fb&&E.fb.received?`<div class="stat ${E.fb.received[0]/E.fb.received[1]>=0.8?'gd':'bd'}"><div class="n">${pct(E.fb.received[0],E.fb.received[1])}</div><div class="l">Received mid-clerkship feedback</div><div class="s">${E.fb.received[0]} of ${E.fb.received[1]} · detail on Curriculum &amp; evaluation</div></div>`:E.fbPct?`<div class="stat ${E.fbPct.received>=80?'gd':'bd'}"><div class="n">${E.fbPct.received==null?'—':E.fbPct.received+'%'}</div><div class="l">Received mid-clerkship feedback</div><div class="s">YTD · by rotation and the observation and workload items are on Curriculum &amp; evaluation</div></div>`:`<div class="stat cyan"><div class="n">${q?f1(q[1]):'—'}</div><div class="l">Overall quality of educational experience (1–5)</div><div class="d">${q?delta(q[1],q[2]):''}</div></div>`;
 h+=`</div>`;
 h+=`<div class="grid g2" style="margin-top:14px">`;
-h+=S&&S.sites?`<div class="chart"><div class="t">NBME shelf by site (n = ${S.total.n}) — dot = site mean, whisker ±1 SD, dashed line = clerkship mean</div>${dotplot(S.sites,S.total.mean,{lo:60,hi:95,low:S.sig?S.sites.reduce((a,b)=>a[2]<b[2]?a:b)[0]:null})}<div class="legend">One-way ANOVA F = ${S.F}, p = ${S.p} — ${S.sig?'<span class="flag">site difference</span>':'<span class="ok">no site difference</span>'}. ${esc(S.note)}</div></div>`:S&&S.rot?`<div class="chart"><div class="t">NBME shelf by rotation (YTD n = ${S.total.n}) — dot = rotation mean, whisker ±1 SD, dashed line = YTD mean</div>${dotplot(S.rot,S.total.mean,{lo:60,hi:95})}<div class="legend">${esc(S.note)}</div></div>`:`<div class="chart"><div class="t">NBME shelf by site</div><p class="note">Not on file for AY ${C.year}.</p></div>`;
+h+=S?`<div class="card"><h3 style="margin-top:0">NBME subject exam</h3><div class="grid g2"><div class="stat mag"><div class="n">${S.total.mean}</div><div class="l">Mean${S.rot?' · YTD':''}</div><div class="s">n = ${S.total.n}</div></div><div class="stat ${S.sig?'bd':'gd'}"><div class="n">${S.sites?(S.sig?'Yes':'No'):'—'}</div><div class="l">Site difference (ANOVA)</div><div class="s">${S.sites?'p = '+(S.p<0.001?'<.001':S.p.toFixed(2)):'not tested by site'}</div></div></div><p class="note">Site and rotation detail, distribution, and content areas are on the Assessments tab.</p></div>`:`<div class="card"><h3 style="margin-top:0">NBME subject exam</h3><p class="note">Not on file for AY ${C.year}.</p></div>`;
 h+=G?`<div class="card"><h3 style="margin-top:0">Grade distribution · ${G.period}</h3><table><thead><tr><th>Grade</th><th class="num">n</th><th class="num">%</th></tr></thead><tbody><tr><td>Honors</td><td class="num">${G.honors}</td><td class="num">${pct(G.honors,G.n)}</td></tr><tr><td>Pass</td><td class="num">${G.pass}</td><td class="num">${pct(G.pass,G.n)}</td></tr><tr><td>Fail</td><td class="num">${G.fail}</td><td class="num">${pct(G.fail,G.n)}</td></tr><tr><td><b>Total</b></td><td class="num"><b>${G.n}</b></td><td></td></tr></tbody></table><p class="note">Final grade composite scores, grade bands and quartiles are not yet on file; the gradebook export will populate this panel.</p></div>`:`<div class="card"><h3 style="margin-top:0">Grade distribution</h3><p class="note">Not on file for AY ${C.year}.</p></div>`;
 h+=`</div>`;
 const doCur=DO.cases.map(c=>c.trend[c.trend.length-1]),doPr=DO.cases.map(c=>c.trend[c.trend.length-2]).filter(Boolean);
@@ -197,7 +266,7 @@ if(q)rows.push({label:'Overall quality of experience (of 5) · n='+(E.n??'—'),
 h+=`<h2>Each assessment against the prior year</h2><div class="chart">${hbars(rows,{x0:260,lo:50,grid:[50,60,70,80,90,100]})}<div class="legend">Bar = most recent year on file for each measure; <span class="sw" style="background:#D80B8C"></span>prior year where available. Scaled measures shown as percent of maximum.</div></div>`;
 h+=`<h2>Clinical sites</h2><table class="stack-m"><thead><tr><th>Site</th><th class="num">Site evaluations</th><th class="num">Overall quality of training (1–5)</th><th class="num">Shelf mean (SD), n</th><th class="num">Appropriate supervision</th><th class="num">Faculty professional behavior</th></tr></thead><tbody>`;
 D.site_eval.sites.forEach(s=>{const sh=S&&S.sites?S.sites.find(x=>x[0]===s.s||(x[0]==='BHC'&&s.s==='Behavioral Health Ctr')):null;h+=`<tr><td data-label="Site"><b>${esc(s.s)}</b></td><td class="num" data-label="Evaluations">${s.n}</td><td class="num" data-label="Quality">${rag(s.v[0],4,f1)}</td><td class="num" data-label="Shelf">${sh?sh[2]+' ('+sh[3]+') <small style="color:#6B7280">n='+sh[1]+'</small>':'—'}</td><td class="num" data-label="Supervision">${rag(s.lcme[0],80)}</td><td class="num" data-label="Professionalism">${rag(s.prof,80)}</td></tr>`});
-h+=`</tbody></table><p class="note">Supervision and professional behavior are % Agree/Satisfied + Strongly Agree/Very Satisfied; green at or above 80%, red below. Overall quality: green at or above 4.0. Full site detail is under Curriculum &amp; evaluation.${D.eval.rot?' Site figures are YTD (Rotations 1–3 pooled); site-level counts are not reported by rotation.':''}</p>`;
+h+=`</tbody></table><p class="note">Supervision and professional behavior are % Agree/Satisfied + Strongly Agree/Very Satisfied; green at or above 80%, red below. Overall quality: green at or above 4.0. Site detail: Curriculum &amp; evaluation (evaluation items, learning environment, comments) and Assessments (shelf by site).${D.eval.rot?' Site figures are YTD (Rotations 1–3 pooled); site-level counts are not reported by rotation.':''}</p>`;
 el.innerHTML=h}
 
 // ---------- ASSESSMENTS VIEW
@@ -206,8 +275,8 @@ let h=`<h2>NBME subject exam</h2>${RAGKEY}`;
 if(S&&S.rot){h+=`<div class="grid g4"><div class="stat"><div class="n">${S.total.mean}</div><div class="l">Mean EPC · YTD</div><div class="s">${S.rot.map(r=>r[0].replace('Rotation','Rot')+' '+r[2]).join(' · ')} · YTD ${S.total.mean}</div></div><div class="stat cyan"><div class="n">${S.total.sd}</div><div class="l">SD · YTD</div><div class="s">${S.rot.map(r=>r[0].replace('Rotation','Rot')+' '+r[3]).join(' · ')} · YTD ${S.total.sd}</div></div><div class="stat"><div class="n">${S.total.n}</div><div class="l">Examinees · YTD</div><div class="s">${S.rot.map(r=>r[0].replace('Rotation','Rot')+' '+r[1]).join(' · ')} · YTD ${S.total.n}${S.unique&&S.unique<S.total.n?' ('+(S.total.n-S.unique)+' repeat)':''}</div></div><div class="stat mag"><div class="n">${S.total.min}–${S.total.max}</div><div class="l">Range</div><div class="s">${S.period}</div></div></div>
 <div class="grid g2" style="margin-top:14px"><div class="chart"><div class="t">Total EPC score distribution — YTD (n = ${S.total.n})</div>${hist(S.hist,S.histEdges,{})}<div class="legend">Bins of 5 EPC points; label = lower bound.</div></div>
 <div class="chart"><div class="t">Rotation mean ±1 SD — dashed line = YTD mean</div>${dotplot(S.rot,S.total.mean,{lo:60,hi:95})}<div class="legend">${esc(S.note)}</div></div></div>`;
-if(S.content){const groups=[...new Set(S.content.map(c=>c[0]))];h+=`<h3>Content areas — school vs national comparison group</h3><div class="grid g2">${groups.map(g=>`<div class="chart"><div class="t">${g}</div>${hbars(S.content.filter(c=>c[0]===g).map(c=>({label:c[1].length>44?c[1].slice(0,42)+'…':c[1],v:c[2],prior:c[3]})),{x0:250,lo:60,hi:85,grid:[60,65,70,75,80,85],suffix:'',fmt:f1})}</div>`).join('')}</div><div class="legend">Bar = ISMMS mean EPC across all YTD examinees (n = ${S.total.n}); <span class="sw" style="background:#D80B8C"></span>national comparison group (first-time takers, LCME schools, AY 2024–25), n-weighted across the ${S.content?'five':''} administrations with content reports.</div>`}
-if(S.cats){h+=`<h3>Item performance by content category — ISMMS vs national % correct</h3><div class="chart">${hbars(S.cats.slice(0,12).map(c=>({label:c[0].length>40?c[0].slice(0,38)+'…':c[0],v:c[1],prior:c[2]})),{x0:250,lo:50,hi:90,grid:[50,60,70,80,90],suffix:'%',fmt:v=>v+'%'})}<div class="legend">Twelve categories with the largest gap below national, n-weighted across administrations with item analyses (${S.ia_n} examinees). <span class="sw" style="background:#D80B8C"></span>national.</div></div>`}
+if(S.content){const groups=[...new Set(S.content.map(c=>c[0]))];h+=`<h3>Content areas — school vs national comparison group</h3><div class="grid g2">${groups.map(g=>`<div class="chart"><div class="t">${g}</div>${hbars(S.content.filter(c=>c[0]===g).map(c=>({label:c[1],v:c[2],prior:c[3]})),{x0:250,lo:60,hi:85,grid:[60,65,70,75,80,85],suffix:'',fmt:f1})}</div>`).join('')}</div><div class="legend">Bar = ISMMS mean EPC across all YTD examinees (n = ${S.total.n}); <span class="sw" style="background:#D80B8C"></span>national comparison group (first-time takers, LCME schools, AY 2024–25), n-weighted across the ${S.content?'five':''} administrations with content reports.</div>`}
+if(S.cats){h+=`<h3>Item performance by content category — ISMMS vs national % correct</h3><div class="chart">${hbars(S.cats.slice(0,12).map(c=>({label:c[0],v:c[1],prior:c[2]})),{x0:250,lo:50,hi:90,grid:[50,60,70,80,90],suffix:'%',fmt:v=>v+'%'})}<div class="legend">Twelve categories with the largest gap below national, n-weighted across administrations with item analyses (${S.ia_n} examinees). <span class="sw" style="background:#D80B8C"></span>national.</div></div>`}
 if(S.weak){h+=`<h3>Weakest items — ISMMS vs national % correct</h3><table class="stack-m"><thead><tr><th>Content description</th><th class="num">ISMMS</th><th class="num">National</th><th class="num">Gap</th><th class="num">n</th></tr></thead><tbody>${S.weak.map(w=>`<tr><td data-label="Item">${esc(w[0])}</td><td class="num flag" data-label="ISMMS">${w[1]}%</td><td class="num" data-label="National">${w[2]}%</td><td class="num" data-label="Gap">${w[1]-w[2]}</td><td class="num" data-label="n">${w[3]}</td></tr>`).join('')}</tbody></table><p class="note">Items appearing on forms taken by 20 or more YTD examinees; ranked by gap to national. Item text is not released by NBME.</p>`}}
 else if(S){const hiS=S.sites.reduce((a,b)=>a[2]>b[2]?a:b),loS=S.sites.reduce((a,b)=>a[2]<b[2]?a:b);
 h+=`<div class="grid g4"><div class="stat"><div class="n">${S.total.mean}</div><div class="l">Clerkship mean</div><div class="s">n = ${S.total.n} · ${S.sites.length} sites</div></div><div class="stat cyan"><div class="n">${hiS[2]}</div><div class="l">Highest site — ${esc(hiS[0])}</div><div class="s">n = ${hiS[1]} · SD ${hiS[3]}</div></div><div class="stat ${S.sig?'mag':'cyan'}"><div class="n">${loS[2]}</div><div class="l">Lowest site — ${esc(loS[0])}</div><div class="s">n = ${loS[1]} · SD ${loS[3]}</div></div><div class="stat ${S.sig?'mag':'green'}"><div class="n">${S.p<0.001?'<.001':S.p.toFixed(2)}</div><div class="l">ANOVA p — ${S.sig?'site difference':'no site difference'}</div><div class="s">F = ${S.F} · from site N, mean, SD</div></div></div>
@@ -241,7 +310,7 @@ el.innerHTML=h}
 // ---------- CURRICULUM & EVALUATION VIEW
 function renderCurric(){const E=D.eval,SE=D.site_eval,C=D.clerk;const el=$('#v-curric');
 let h=`${RAGKEY}<h2>Student evaluation of clerkship <span class="pill">AY ${C.year}</span>${/YTD/.test(C.year)?'<span class="ytdpill">PARTIAL</span>':''}</h2><p class="note">${E.n!=null?E.n+' students completed the clerkship evaluation':'Clerkship evaluation'}${E.prior_n?` (prior year n = ${E.prior_n})`:''}. Means on a 5-point scale; <span class="sw" style="background:#D80B8C"></span>prior-year mean.</p>
-`+(E.items.length?`<div class="chart">${hbars(E.items.map(i=>({label:clean(i[0]).length>60?clean(i[0]).slice(0,58)+'…':clean(i[0]),v:i[1],prior:i[2]})),{x0:310,lo:3,hi:5,grid:[3,3.5,4,4.5,5],suffix:'',fmt:f1,ref:4})}<div class="legend">Green = 4.0 or above, red = below 4.0. * 1 = Poor … 5 = Excellent &nbsp; ** 1 = Strongly disagree … 5 = Strongly agree</div></div>`:`<p class="note">The AY ${C.year} clerkship evaluation question analysis has not yet been compiled. Program-level monitoring items on file: mid-clerkship feedback ${E.fbPct?.received??'—'}%, observed history ${E.fbPct?.obsHx??'—'}%, observed exam ${E.fbPct?.obsPE??'—'}%, workload manageable ${E.fbPct?.workload??'—'}%.</p>`);
+`+(E.items.length?`<div class="chart">${hbars(E.items.map(i=>({label:clean(i[0]),v:i[1],prior:i[2]})),{x0:310,lo:3,hi:5,grid:[3,3.5,4,4.5,5],suffix:'',fmt:f1,ref:4})}<div class="legend">Green = 4.0 or above, red = below 4.0. * 1 = Poor … 5 = Excellent &nbsp; ** 1 = Strongly disagree … 5 = Strongly agree</div></div>`:`<p class="note">The AY ${C.year} clerkship evaluation question analysis has not yet been compiled. Program-level monitoring items on file: mid-clerkship feedback ${E.fbPct?.received??'—'}%, observed history ${E.fbPct?.obsHx??'—'}%, observed exam ${E.fbPct?.obsPE??'—'}%, workload manageable ${E.fbPct?.workload??'—'}%.</p>`);
 const fb=E.fb;
 if(!fb&&E.fbPct){h+=`<div class="grid g4" style="margin-top:14px"><div class="stat ${E.fbPct.received>=80?'gd':'bd'}"><div class="n">${E.fbPct.received??'—'}%</div><div class="l">Received mid-clerkship feedback · YTD</div><div class="s">${rotStr(E.rot,'fbReceived',E.fbPct.received)}</div></div><div class="stat ${E.fbPct.obsHx>=80?'gd':'bd'}"><div class="n">${E.fbPct.obsHx??'—'}%</div><div class="l">Observed taking history · YTD</div><div class="s">${rotStr(E.rot,'obsHx',E.fbPct.obsHx)}</div></div><div class="stat ${E.fbPct.obsPE>=80?'gd':'bd'}"><div class="n">${E.fbPct.obsPE??'—'}%</div><div class="l">Observed physical exam · YTD</div><div class="s">${rotStr(E.rot,'obsExam',E.fbPct.obsPE)}</div></div><div class="stat ${E.fbPct.workload>=80?'gd':'bd'}"><div class="n">${E.fbPct.workload??'—'}%</div><div class="l">Workload manageable · YTD</div><div class="s">${rotStr(E.rot,'workload',E.fbPct.workload)}</div></div></div>`}
 if(E.rot){const R=E.rot,labs=R.labels.map((l,i)=>`Rotation ${i+1}`),KEYS=[['Received mid-clerkship feedback','fbReceived'],['Observed taking history','obsHx'],['Observed physical exam','obsExam'],['Workload manageable','workload']];const YT={fbReceived:E.fbPct?.received,obsHx:E.fbPct?.obsHx,obsExam:E.fbPct?.obsPE,workload:E.fbPct?.workload};const pc=(k,i)=>i>=R.n.length?(YT[k]??null):(R.n[i]?Math.round(100*R.program[k][i]/R.n[i]):null);labs.push('YTD');
@@ -255,7 +324,7 @@ const siteNames=SE.sites.map(s=>s.s);
 h+=`<h2>Site evaluation <span class="pill">AY ${C.year}</span>${/YTD/.test(C.year)?'<span class="ytdpill">PARTIAL</span>':''}</h2><div class="grid g4">${SE.sites.map((s,i)=>`<div class="stat ${s.v[0]==null?'':(s.v[0]>=4?'gd':'bd')}"><div class="n">${f1(s.v[0])}</div><div class="l">${esc(s.s)} — overall quality of training</div><div class="s">n = ${s.n} site evaluations</div></div>`).join('')}</div>
 `+(SE.sites.some(x=>x.v.some(v=>v!=null))?`<div class="chart" style="margin-top:14px"><div class="t">Site evaluation items — mean (1–5), by site</div>${heat(SE.items.map(clean),siteNames.map((n,i)=>`${esc(n)}<br><small>n=${SE.sites[i].n}</small>`),(r,i)=>{const it=SE.items.findIndex(x=>clean(x)===r);return SE.sites[i].v[it]},{lo:3.5,hi:5,thr:4,fmt:f1})}<div class="legend">Green = 4.0 or above, red = below 4.0. * 1 = Poor … 5 = Excellent &nbsp; ** 1 = Strongly disagree … 5 = Strongly agree &nbsp; *** 1 = Very dissatisfied … 5 = Very satisfied.</div></div>`:`<p class="note">Site evaluation item means for AY ${C.year} have not yet been compiled; the learning-environment items below are from the Rotations 1–3 site evaluation extract.</p>`)+`
 <div class="chart" style="margin-top:14px"><div class="t">Learning environment items — % favorable, by site</div>${heat([...SE.lcme_items,'Faculty professional behavior (satisfied)'],siteNames.map((n,i)=>`${esc(n)}<br><small>n=${SE.sites[i].n}</small>`),(r,i)=>{const k=SE.lcme_items.indexOf(r);return k>=0?SE.sites[i].lcme[k]:SE.sites[i].prof},{lo:60,hi:100,thr:80})}<div class="legend">Supervision items are % Agree + Strongly Agree; patient-interaction items are % Very Often/Always; green = 80% or above, red = below 80%. Between-site differences on these items are not statistically significant after multiple-comparison correction (site comparability analysis, AY 2025–26).</div></div>`;
-if(SE.valley_new){const V=SE.valley_new;h+=`<div class="chart" style="margin-top:14px"><div class="t">Valley Hospital — new ASCEND site evaluation instrument (${V.period}, n = ${V.n})</div>${hbars(V.items.map(i=>({label:i[0].length>58?i[0].slice(0,56)+'…':i[0],v:i[1]})),{x0:300,lo:1,hi:4,grid:[1,2,3,4],suffix:'',fmt:f1,ref:3})}<div class="legend">4-point scale (1 = Strongly disagree / Poor … 4 = Strongly agree / Excellent); not comparable to the 5-point legacy site items above. Three respondents.</div></div>`}
+if(SE.valley_new){const V=SE.valley_new;h+=`<div class="chart" style="margin-top:14px"><div class="t">Valley Hospital — new ASCEND site evaluation instrument (${V.period}, n = ${V.n})</div>${hbars(V.items.map(i=>({label:i[0],v:i[1]})),{x0:300,lo:1,hi:4,grid:[1,2,3,4],suffix:'',fmt:f1,ref:3})}</div><div class="callout"><span class="tag">NEW INSTRUMENT · AY 2026–27</span><b>ASCEND site evaluation, 4-point scale</b> — 1 = Strongly disagree / Poor … 4 = Strongly agree / Excellent. <b>Green = 3.2 or above</b>, <b>red = below</b>. Not comparable to the 5-point legacy site items.</div>`}
 const th=SE.site_themes||{};const tsites=SE.sites.filter(s=>th[s.s]);
 if(tsites.length){h+=`<h3>Site comments</h3><table class="stack-m"><thead><tr><th>Site</th><th>Strengths</th><th>Suggestions</th></tr></thead><tbody>${tsites.map(s=>{const t=th[s.s];const fmt=(txt,b)=>[txt?esc(txt):'',b.map(x=>x[0]+' '+esc(x[1])).join(' · ')].filter(Boolean).join(' ')||'—';return `<tr><td data-label="Site"><b>${esc(s.s)}</b></td><td data-label="Strengths">${fmt(t.s,t.sb)}</td><td data-label="Suggestions">${fmt(t.i,t.ib)}</td></tr>`}).join('')}</tbody></table>`}
 h+=`<h2>Curricular structure</h2><p class="note">Hours by instructional method and objective mapping are not on file for AY ${C.year}.</p>`;
@@ -282,13 +351,13 @@ function renderCompare(){const H=D.hist,C=D.clerk,el=$('#v-compare');const yrs=H
 const q=H.items.find(i=>/quality of/i.test(i[0]));const lastv=v=>[...v].reverse().find(x=>x!=null);
 const changes=H.items.map(it=>{const v=it[1];return (v[L-1]!=null&&v[L-2]!=null)?v[L-1]-v[L-2]:null}).filter(x=>x!=null);
 let h=`<h2>Five years at a glance</h2>${RAGKEY}<div class="grid g4">
-<div class="stat"><div class="n">${H.n[L-1]??'—'}</div><div class="l">Evaluations, AY ${yrs[L-1]} (last compiled year)</div><div class="s">${yrs[0]}: ${H.n[0]??'—'} · ${yrs[L-2]}: ${H.n[L-2]??'—'} · 2026–27 YTD: not yet compiled</div></div>
+<div class="stat"><div class="n">${H.n[L-1]??(D.eval.n??'—')}</div><div class="l">Evaluations, AY ${yrs[L-1]}${L>1?' (last compiled year)':''}</div><div class="s">${L>1?`${yrs[0]}: ${H.n[0]??'—'} · ${yrs[L-2]}: ${H.n[L-2]??'—'} · 2026–27 YTD: ${D.eval.eval27?'new instrument, see Curriculum &amp; evaluation':'not yet compiled'}`:'New clerkship in AY 2026–27 — no prior years'}</div></div>
 <div class="stat ${q&&q[1][L-1]>=4?'gd':'bd'}"><div class="n">${q?f1(q[1][L-1]):'—'}</div><div class="l">Overall quality of experience</div><div class="d">${q?delta(q[1][L-1],q[1][L-2]):''}</div></div>
-<div class="stat green"><div class="n">${changes.filter(x=>x>0).length}</div><div class="l">Items up vs ${yrs[L-2]}</div><div class="s">of ${changes.length} items with both years</div></div>
-<div class="stat cyan"><div class="n">${changes.filter(x=>x<0).length}</div><div class="l">Items down vs ${yrs[L-2]}</div><div class="s">${changes.filter(x=>x<=-0.3).length} down by 0.3 or more</div></div></div>`;
-h+=`<p class="note" style="margin-top:12px">Each panel: item mean by year, AY ${yrs[0]} → ${yrs[L-1]} (scale 3.5–5) with the 2026–27 YTD position added; dashed line = 4.0. <span class="sw" style="background:#D80B8C"></span>most recent compiled year; the shaded 2026–27 YTD column fills when the clerkship evaluation is compiled. Evaluations per year: ${yrs.map((y,i)=>y+' n='+(H.n[i]??'—')).join(' · ')}.</p><div class="grid g3 sparks">`;
+<div class="stat green"><div class="n">${changes.filter(x=>x>0).length}</div><div class="l">Items up vs ${yrs[L-2]??'prior year'}</div><div class="s">of ${changes.length} items with both years</div></div>
+<div class="stat cyan"><div class="n">${changes.filter(x=>x<0).length}</div><div class="l">Items down vs ${yrs[L-2]??'prior year'}</div><div class="s">${changes.filter(x=>x<=-0.3).length} down by 0.3 or more</div></div></div>`;
+h+=H.items.length?`<p class="note" style="margin-top:12px">Each panel: item mean by year, AY ${yrs[0]} → ${yrs[L-1]} (scale 3.5–5) with the 2026–27 YTD position added; dashed line = 4.0. <span class="sw" style="background:#D80B8C"></span>most recent compiled year; the shaded 2026–27 YTD column fills when the clerkship evaluation is compiled. Evaluations per year: ${yrs.map((y,i)=>y+' n='+(H.n[i]??'—')).join(' · ')}.</p><div class="grid g3 sparks">`:'';
 H.items.forEach(it=>{h+=`<div class="card sp"><div class="t">${esc(clean(it[0]))}</div>${spark(it[1],yrs,{lo:3.5,hi:5,ref:4,ext:'2026-27 YTD'})}</div>`});
-h+=`</div>`;
+h+=H.items.length?`</div>`:`<p class="note">No multi-year clerkship evaluation series yet; AY 2026–27 is the first year. Rotation-level results are on the Curriculum &amp; evaluation tab.</p>`;
 const S=H.sites||{};const sk=Object.keys(S).filter(k=>S[k].quality);
 if(sk.length){const sy=S[sk[0]].years;const pad=a=>{a=a||[];const n=sy.length;return a.length>=n?a.slice(-n):Array(n-a.length).fill(null).concat(a)};
 const syx=[...sy,'2026-27 YTD'],padx=a=>[...pad(a),null];h+=`<h2>Sites over five years</h2><div class="grid g2"><div class="chart"><div class="t">Overall quality of training, by site</div>${lines(sk.map((s,i)=>({v:padx(S[s].quality),color:COLS[i]})),syx,{lo:3.5,hi:5,grid:[3.5,4,4.5,5],ref:4,refLabel:'4.0',ext:true})}<div class="legend">${sk.map((s,i)=>`<span class="sw" style="background:${COLS[i]}"></span>${esc(s)} (n ${pad(S[s].n).map(x=>x??'—').join('/')})`).join(' ')}; the shaded 2026–27 YTD column fills when the site evaluation is compiled</div></div>
@@ -306,7 +375,29 @@ if(D.do.cases.length){const dy=D.do.cases[0].trend.map(x=>x.yr);h+=`<h2>Direct O
 el.innerHTML=h}
 
 function renderAll(){renderModule();renderAssess();renderCurric();renderCompare()}
+window.renderAll=renderAll;
 renderAll();
-$('#cohort').addEventListener('change',e=>{D=ALL[e.target.value];renderAll();window.scrollTo({top:0})});
+
+// wrap wide tables so they scroll inside their card instead of overflowing the page
+window.wrapTables=function(){document.querySelectorAll('section.view table').forEach(t=>{if(t.parentElement.classList.contains('tscroll'))return;if(window.matchMedia('(max-width:760px)').matches&&t.classList.contains('stack-m'))return;const w=document.createElement('div');w.className='tscroll';t.parentNode.insertBefore(w,t);w.appendChild(t)})};
+
+window.markScroll=function(){document.querySelectorAll('.tscroll').forEach(w=>{const upd=()=>{const sc=w.scrollWidth>w.clientWidth+2;w.classList.toggle('scrollable',sc);w.classList.toggle('at-end',!sc||w.scrollLeft+w.clientWidth>=w.scrollWidth-2)};if(!w._ms){w.addEventListener('scroll',upd,{passive:true});w._ms=1}upd()})};
+window.addEventListener('resize',()=>window.markScroll&&markScroll());
+// ---- mobile helpers: tap tooltips + collapsible sections + jump bar
+(function(){const isM=()=>window.matchMedia('(max-width:760px)').matches;
+ let sheet=document.getElementById('tipsheet');if(!sheet){sheet=document.createElement('div');sheet.id='tipsheet';sheet.innerHTML='<span class="x">×</span><b></b><span class="t"></span>';document.body.appendChild(sheet);sheet.querySelector('.x').addEventListener('click',()=>sheet.classList.remove('on'))}
+ document.addEventListener('click',e=>{const c=e.target.closest('[data-tip]');if(!c){if(!e.target.closest('#tipsheet'))sheet.classList.remove('on');return}if(!isM())return;sheet.querySelector('b').textContent=c.textContent.trim();sheet.querySelector('.t').textContent=c.getAttribute('data-tip');sheet.classList.add('on')});
+ window.mobilize=function(){document.querySelectorAll('section.view').forEach(v=>{
+   if(v.querySelector('.sec'))return;const kids=[...v.childNodes];let cur=null,secs=[];const frag=document.createDocumentFragment();
+   kids.forEach(k=>{if(k.nodeType===1&&k.tagName==='H2'){cur=document.createElement('div');cur.className='sec';const body=document.createElement('div');body.className='sec-body';cur.appendChild(k);cur.appendChild(body);frag.appendChild(cur);secs.push(cur)}else if(cur){cur.querySelector('.sec-body').appendChild(k)}else frag.appendChild(k)});
+   v.innerHTML='';
+   if(isM()&&secs.length>1){const jump=document.createElement('div');jump.className='jump';secs.forEach((s,i)=>{const id=v.id+'-s'+i;s.id=id;const a=document.createElement('a');a.href='#'+id;a.textContent=s.querySelector('h2').textContent.replace(/PARTIAL|AY 20\d\d–\d\d/g,'').trim();a.addEventListener('click',ev=>{ev.preventDefault();s.classList.remove('closed');s.scrollIntoView({behavior:'smooth',block:'start'})});jump.appendChild(a)});v.appendChild(jump)}
+   v.appendChild(frag);
+   secs.forEach((s,i)=>{const h=s.querySelector('h2');h.addEventListener('click',()=>{if(isM()){s.classList.toggle('closed');setTimeout(markScroll,0)}});if(isM()&&i>0)s.classList.add('closed')});
+ })};
+ const _ra=window.renderAll;window.renderAll=function(){_ra();mobilize();wrapTables();setTimeout(markScroll,0)};mobilize();wrapTables();setTimeout(markScroll,0);
+})();
+
+$('#cohort').addEventListener('change',e=>{D=ALL[e.target.value];window.renderAll();window.scrollTo({top:0})});
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.querySelectorAll('section.view').forEach(s=>s.classList.remove('on'));$('#v-'+b.dataset.v).classList.add('on');window.scrollTo({top:0})}));
 </script></body></html>
